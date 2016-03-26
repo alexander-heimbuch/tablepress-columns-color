@@ -1,6 +1,10 @@
 (function ($) {
     'use strict';
 
+    if (window.TABLE_COLORS === undefined) {
+        return;
+    }
+
     var dye = function ($table, columns) {
         var $dataTable = $table.DataTable();
 
