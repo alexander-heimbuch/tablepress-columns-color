@@ -1,10 +1,6 @@
 (function ($) {
     'use strict';
 
-    if (window.TABLE_COLORS === undefined) {
-        return;
-    }
-
     var dye = function ($table, columns) {
         var $dataTable = $table.DataTable();
 
@@ -33,12 +29,18 @@
             }
         });
     };
+    
+    $(document).ready(function () {
+        if (window.TABLE_COLORS === undefined) {
+            return;
+        }
 
-    $.each(window.TABLE_COLORS, function (tableId, columns) {
-        var $table = $('#' + tableId);
+        $.each(window.TABLE_COLORS, function (tableId, columns) {
+            var $table = $('#' + tableId);
 
-        $table.on( 'draw.dt', function () {
-            dye($table, columns);
+            $table.on( 'draw.dt', function () {
+                dye($table, columns);
+            });
         });
     });
 })(jQuery);
